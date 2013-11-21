@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<extension key="be.vkw.deelnemerlijst" type="module">
+  <file>deelnemerlijst</file>
+  <name>Rapport voor Deelnemerlijst</name>
+  <description>Deelnemerlijst rapport</description>
+  <license>Academic Free License v3.0</license>
+  <maintainer>
+    <author>Jaap Jansma</author>
+    <email>jaap.jansma@civicoop.org</email>
+  </maintainer>
+  <releaseDate>2013-11-21</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.2</ver>
+  </compatibility>
+  <civix>
+    <namespace>CRM/Deelnemerlijst</namespace>
+  </civix>
+</extension>
