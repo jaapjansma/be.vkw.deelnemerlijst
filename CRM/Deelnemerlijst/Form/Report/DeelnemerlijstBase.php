@@ -133,4 +133,18 @@ class CRM_Deelnemerlijst_Form_Report_DeelnemerlijstBase extends CRM_Report_Form_
 		
 		return $arrNew;
 	}
+	
+	function getEventFilterOptions() {
+		$events = array();
+		$query = "
+			select id, start_date, title from civicrm_event
+			where (is_template IS NULL OR is_template = 0) AND is_active
+			order by start_date DESC, title ASC 
+		";
+		$dao = CRM_Core_DAO::executeQuery($query);
+		while($dao->fetch()) {
+		$events[$dao->id] = CRM_Utils_Date::customFormat(substr($dao->start_date, 0, 10)) . " :: {$dao->title} (ID {$dao->id})";
+		}
+		return $events;
+	}
 }
