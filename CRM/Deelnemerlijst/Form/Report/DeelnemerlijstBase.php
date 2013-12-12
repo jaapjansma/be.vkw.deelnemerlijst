@@ -51,6 +51,8 @@ class CRM_Deelnemerlijst_Form_Report_DeelnemerlijstBase extends CRM_Report_Form_
 		
 		if ($table_name && isset($fields['Organisatie_deelnemer'])) {
 			$this->_columns[$table_name]['fields']['custom_'.$fields['Organisatie_deelnemer']['id']]['default'] = TRUE;
+			$this->_columns[$table_name]['fields']['custom_'.$fields['Organisatie_deelnemer']['id']]['name'] = 'nick_name';
+
 			$this->_columns['civicrm_organisation_address'] = array(
 				'dao' => 'CRM_Core_DAO_Address',
 				'alias' => 'civicrm_organisation_address',
@@ -65,6 +67,19 @@ class CRM_Deelnemerlijst_Form_Report_DeelnemerlijstBase extends CRM_Report_Form_
 					),
 					'country_id' =>
 						array('title' => ts('Country'),
+					),
+				),
+				'grouping' => $this->_columns[$table_name]['grouping'],
+			);
+			
+			$this->_columns['civicrm_organisation_contact'] = array(
+				'dao' => 'CRM_Contact_DAO_Contact',
+				'alias' => 'civicrm_organisation_contact',
+				'fields' => array(
+					'display_name' => array (
+						'default' => TRUE,
+						'no_display' => TRUE,
+						'required' => TRUE,
 					),
 				),
 				'grouping' => $this->_columns[$table_name]['grouping'],
@@ -98,11 +113,21 @@ class CRM_Deelnemerlijst_Form_Report_DeelnemerlijstBase extends CRM_Report_Form_
 	
 	function customDataFrom() {
 		parent::customDataFrom();
+		
 		if (isset($this->_aliases['civicrm_organisation_address']) && $this->vkw_inschrijving_table && isset($this->vkw_inschrijving_fields['Organisatie_deelnemer'])) {
+			$field_alias = $this->_columns[$this->vkw_inschrijving_table]['fields']['custom_'.$this->vkw_inschrijving_fields['Organisatie_deelnemer']['id']]['alias'];
 			$this->_from .= "
 				LEFT JOIN civicrm_address {$this->_aliases['civicrm_organisation_address']}
-                    ON {$this->_aliases[$this->vkw_inschrijving_table]}.{$this->vkw_inschrijving_fields['Organisatie_deelnemer']['column_name']} = {$this->_aliases['civicrm_organisation_address']}.contact_id AND
+                    ON {$field_alias}.id = {$this->_aliases['civicrm_organisation_address']}.contact_id AND
                        {$this->_aliases['civicrm_organisation_address']}.is_primary = 1
+			";
+		}
+		
+		if (isset($this->_aliases['civicrm_organisation_contact']) && $this->vkw_inschrijving_table && isset($this->vkw_inschrijving_fields['Organisatie_deelnemer'])) {
+			$field_alias = $this->_columns[$this->vkw_inschrijving_table]['fields']['custom_'.$this->vkw_inschrijving_fields['Organisatie_deelnemer']['id']]['alias'];
+			$this->_from .= "
+				LEFT JOIN civicrm_contact {$this->_aliases['civicrm_organisation_contact']}
+                    ON {$field_alias}.id = {$this->_aliases['civicrm_organisation_contact']}.id
 			";
 		}
 	}
