@@ -11,8 +11,8 @@ return array (
     'params' => 
     array (
       'version' => 3,
-      'label' => 'Uitgebreide deelnemerslijst',
-      'description' => 'Uitgebreide deelnemerslijst (be.vkw.deelnemerlijst)',
+      'label' => 'Deelnemerslijst voor organisator',
+      'description' => 'Uitgebreide deelnemerslijst (be.vkw.deelnemerlijst) t.b.v organisator',
       'class_name' => 'CRM_Deelnemerlijst_Form_Report_UitgebreideDeelnemersLijst',
       'report_url' => 'be.vkw.deelnemerlijst/uitgebreidedeelnemerslijst',
       'component' => 'CiviEvent',
