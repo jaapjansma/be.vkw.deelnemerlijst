@@ -147,7 +147,7 @@ class CRM_Deelnemerlijst_Form_Report_Deelnemerlijst extends CRM_Deelnemerlijst_F
 
 		$entryFound = FALSE;
 		foreach($rows as $index => $row) {
-			if (isset($row['civicrm_contact_first_name']) && isset($row['civicrm_contact_frist_name']) &&  isset($row['civicrm_contact_last_name']) || isset($row[$this->vkw_inschrijving_table.'_custom_'.$this->vkw_inschrijving_fields['Functie_deelnemer']['id']])) {
+			if (isset($row['civicrm_contact_first_name']) && isset($row['civicrm_contact_last_name']) || isset($row[$this->vkw_inschrijving_table.'_custom_'.$this->vkw_inschrijving_fields['Functie_deelnemer']['id']])) {
 				$entryFound = TRUE;
 				$rows[$index]['civicrm_contact_first_name_orig'] = $rows[$index]['civicrm_contact_first_name'];
 				$rows[$index]['civicrm_contact_first_name'] = "<span style=\"font-weight: bold;\">".$row['civicrm_contact_last_name']."</span> <span>".$row['civicrm_contact_first_name']."</span>\n<br />".$row[$this->vkw_inschrijving_table.'_custom_'.$this->vkw_inschrijving_fields['Functie_deelnemer']['id']];
@@ -181,6 +181,10 @@ class CRM_Deelnemerlijst_Form_Report_Deelnemerlijst extends CRM_Deelnemerlijst_F
 		}
 		parent::endPostProcess($rows);
 	}
+  
+  function orderBy() {
+    $this->_orderBy = " ORDER BY `civicrm_contact_last_name` ASC, `civicrm_contact_first_name` ASC";
+  }
 	
 	function compileContent(){
 		if ($this->_outputMode == 'doc') {
@@ -198,7 +202,7 @@ class CRM_Deelnemerlijst_Form_Report_Deelnemerlijst extends CRM_Deelnemerlijst_F
 		echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">";
 		echo "</head><body>";
 		echo '<table style="width: 100%; font-family: Arial; font-size: 10pt; border-style: none; border-size: 0px;">';
-		echo '<tr><td><b>Naam</b></td><td><b>Organisatie</b></td></tr>';
+		//echo '<tr><td><b>Naam</b></td><td><b>Organisatie</b></td></tr>';
 		foreach ($rows as $index=> $row) {
 			$firstName = $rows[$index]['civicrm_contact_first_name_orig'];
 			$lastName = $rows[$index]['civicrm_contact_last_name'];
