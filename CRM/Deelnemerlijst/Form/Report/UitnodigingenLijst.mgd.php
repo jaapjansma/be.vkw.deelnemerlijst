@@ -11,8 +11,8 @@ return array (
     'params' => 
     array (
       'version' => 3,
-      'label' => 'Uitnodigingen Lijst (e-mailadressen)',
-      'description' => 'UitnodigingenLijst (be.vkw.deelnemerlijst)',
+      'label' => 'Uitnodigingen lijst (e-mailadressen)',
+      'description' => 'Uitnodigingen lijst (be.vkw.deelnemerlijst)',
       'class_name' => 'CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst',
       'report_url' => 'be.vkw.deelnemerlijst/uitnodigingenlijst',
       'component' => 'CiviEvent',
