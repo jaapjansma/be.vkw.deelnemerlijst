@@ -6,15 +6,15 @@
 return array (
   0 => 
   array (
-    'name' => 'CRM_Deelnemerlijst_Form_Report_UitgebreideDeelnemersLijst',
+    'name' => 'CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst',
     'entity' => 'ReportTemplate',
     'params' => 
     array (
       'version' => 3,
-      'label' => 'Deelnemerslijst voor organisator',
-      'description' => 'Uitgebreide deelnemerslijst (be.vkw.deelnemerlijst) t.b.v organisator',
-      'class_name' => 'CRM_Deelnemerlijst_Form_Report_UitgebreideDeelnemersLijst',
-      'report_url' => 'be.vkw.deelnemerlijst/uitgebreidedeelnemerslijst',
+      'label' => 'Uitnodigingen Lijst (e-mailadressen)',
+      'description' => 'UitnodigingenLijst (be.vkw.deelnemerlijst)',
+      'class_name' => 'CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst',
+      'report_url' => 'be.vkw.deelnemerlijst/uitnodigingenlijst',
       'component' => 'CiviEvent',
     ),
   ),
