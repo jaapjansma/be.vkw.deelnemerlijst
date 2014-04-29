@@ -44,6 +44,14 @@ class CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst extends CRM_Report_Form 
             'no_repeat' => TRUE,
             'no_display' => TRUE,
           ),
+          'first_name' => array(
+            'title' => ts('First Name'),
+            'no_repeat' => TRUE,
+          ),
+          'last_name' => array(
+            'title' => ts('Last Name'),
+            'no_repeat' => TRUE,
+          ),
           'email_greeting_display' => array(
             'title' => ts('Email Greeting'),
             'default' => TRUE,
@@ -52,13 +60,17 @@ class CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst extends CRM_Report_Form 
             'title' => ts('Postal Greeting'),
             'default' => TRUE,
           ),
-          'first_name' => array(
-            'title' => ts('First Name'),
-            'no_repeat' => TRUE,
+           'addressee_display' => array(
+            'title' => ts('Addressee'),
+            'default' => TRUE,
           ),
-          'last_name' => array(
-            'title' => ts('Last Name'),
-            'no_repeat' => TRUE,
+           'gender_id' => array(
+            'title' => ts('Gender'),
+            'default' => FALSE,
+          ),
+           'birth_date' => array(
+            'title' => ts('Birth Date'),
+            'default' => FALSE,
           ),
         ),
         'filters' => array(
