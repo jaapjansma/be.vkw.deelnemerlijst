@@ -45,7 +45,11 @@ class CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst extends CRM_Report_Form 
             'no_display' => TRUE,
           ),
           'email_greeting_display' => array(
-            'title' => ts('Aanhef e-mail'),
+            'title' => ts('Email Greeting'),
+            'default' => TRUE,
+          ),
+          'postal_greeting_display' => array(
+            'title' => ts('Postal Greeting'),
             'default' => TRUE,
           ),
           'first_name' => array(
@@ -393,7 +397,7 @@ class CRM_Deelnemerlijst_Form_Report_UitnodigingenLijst extends CRM_Report_Form 
     // get the acl clauses built before we assemble the query
     $this->buildACLClause($this->_aliases['civicrm_contact']);
     $sql = $this->buildQuery(TRUE);
-
+    
     $rows = array();
     $this->buildRows($sql, $rows);
 
